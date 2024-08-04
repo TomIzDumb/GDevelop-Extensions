@@ -1,0 +1,82 @@
+{
+  "author": "",
+  "category": "Advanced",
+  "extensionNamespace": "",
+  "fullName": "ScreenShot3D",
+  "helpPath": "",
+  "iconUrl": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0ibWRpLWNhbWVyYS1lbmhhbmNlIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTksM0w3LjE3LDVINEEyLDIgMCAwLDAgMiw3VjE5QTIsMiAwIDAsMCA0LDIxSDIwQTIsMiAwIDAsMCAyMiwxOVY3QTIsMiAwIDAsMCAyMCw1SDE2LjgzTDE1LDNNMTIsMThBNSw1IDAgMCwxIDcsMTNBNSw1IDAgMCwxIDEyLDhBNSw1IDAgMCwxIDE3LDEzQTUsNSAwIDAsMSAxMiwxOE0xMiwxN0wxMy4yNSwxNC4yNUwxNiwxM0wxMy4yNSwxMS43NUwxMiw5TDEwLjc1LDExLjc1TDgsMTNMMTAuNzUsMTQuMjUiIC8+PC9zdmc+",
+  "name": "Screenshot3D",
+  "previewIconUrl": "https://asset-resources.gdevelop.io/public-resources/Icons/7f32867436cd1bf69935617fd018f294961db5617a64097df78c030a4f2fd399_camera-enhance.svg",
+  "shortDescription": "Takes a screenshot that works with both Gdevelop's 2D and 3D",
+  "version": "1.0",
+  "description": "",
+  "tags": [
+    "Screenshot",
+    "Screen",
+    "UI"
+  ],
+  "authorIds": [
+    "VOjZ8nPDQygGiB54WZjwVomppds2"
+  ],
+  "dependencies": [],
+  "globalVariables": [],
+  "sceneVariables": [],
+  "eventsFunctions": [
+    {
+      "fullName": "Take A Screenshot To Save Manually",
+      "functionType": "Action",
+      "name": "Manual_Save",
+      "sentence": "",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::JsCode",
+              "inlineCode": [
+                "function captureScreenshot(runtimeScene) {",
+                "    setTimeout(function() {",
+                "        var renderer = runtimeScene.getGame().getRenderer().getPIXIRenderer();",
+                "        var originalBackgroundColor = runtimeScene.getBackgroundColor();",
+                "        runtimeScene.setBackgroundColor('black');",
+                "        runtimeScene.renderAndStep(0);",
+                "        var canvas = renderer.view;",
+                "        var dataUrl = canvas.toDataURL('image/png');",
+                "        runtimeScene.setBackgroundColor(originalBackgroundColor);",
+                "        var link = document.createElement('a');",
+                "        link.href = dataUrl;",
+                "        link.download = 'screenshot.png';",
+                "        link.click();",
+                "    }, 100);",
+                "}",
+                "",
+                "captureScreenshot(runtimeScene);"
+              ],
+              "parameterObjects": "",
+              "useStrict": true,
+              "eventsSheetExpanded": false
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": []
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    }
+  ],
+  "eventsBasedBehaviors": [],
+  "eventsBasedObjects": []
+}
