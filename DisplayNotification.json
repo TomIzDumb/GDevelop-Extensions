@@ -1,0 +1,98 @@
+{
+  "author": "TomIzDumb",
+  "category": "User interface",
+  "extensionNamespace": "",
+  "fullName": "Display Notification",
+  "helpPath": "",
+  "iconUrl": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyMy4wLjMsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iSWNvbnMiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgMzIgMzIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDMyIDMyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8Zz4NCgk8cGF0aCBkPSJNMjguOCwyMy40bC0wLjktMS4zYy0wLjYtMC45LTAuOS0yLTAuOS0zLjFjMC0yLjItMS44LTQtNC00cy00LDEuOC00LDRjMCwxLjEtMC4zLDIuMi0wLjksMy4xbC0wLjksMS4zDQoJCWMtMC4yLDAuMy0wLjIsMC43LDAsMVMxNy42LDI1LDE4LDI1aDEwYzAuNCwwLDAuNy0wLjIsMC45LTAuNVMyOSwyMy44LDI4LjgsMjMuNHoiLz4NCgk8cGF0aCBkPSJNMTUuNSwyMi4zbDAuOS0xLjNjMC40LTAuNiwwLjYtMS4zLDAuNi0yYzAtMy4zLDIuNy02LDYtNmMzLjEsMCw1LjYsMi4zLDYsNS40YzAtMC4xLDAtMC4yLDAtMC40VjljMC0yLjgtMi4yLTUtNS01SDgNCgkJQzUuMiw0LDMsNi4yLDMsOXYxOWMwLDAuNCwwLjIsMC43LDAuNiwwLjlDMy43LDI5LDMuOSwyOSw0LDI5YzAuMiwwLDAuNS0wLjEsMC43LTAuMmMzLTIuNiw2LjYtNC4zLDEwLjQtNS4yDQoJCUMxNS4xLDIzLjEsMTUuMiwyMi43LDE1LjUsMjIuM3ogTTExLDExaDZjMC42LDAsMSwwLjQsMSwxcy0wLjQsMS0xLDFoLTZjLTAuNiwwLTEtMC40LTEtMVMxMC40LDExLDExLDExeiBNMTQsMTdoLTMNCgkJYy0wLjYsMC0xLTAuNC0xLTFzMC40LTEsMS0xaDNjMC42LDAsMSwwLjQsMSwxUzE0LjYsMTcsMTQsMTd6Ii8+DQoJPHBhdGggZD0iTTI1LDI2aC00Yy0wLjYsMC0xLDAuNC0xLDFjMCwxLjcsMS4zLDMsMywzczMtMS4zLDMtM0MyNiwyNi40LDI1LjYsMjYsMjUsMjZ6Ii8+DQo8L2c+DQo8L3N2Zz4NCg==",
+  "name": "DisplayNotification",
+  "previewIconUrl": "https://asset-resources.gdevelop.io/public-resources/Icons/Glyphster Pack/Master/SVG/Communication/fa5c3fec2e64c7584ce3236dc8f5e2bd09ae5f44f5f13399906954f6fc2f27a1_Communication_chat_message_sms_bell_ring_notification.svg",
+  "shortDescription": "Display notifications on screen.",
+  "version": "1.0.0",
+  "description": "This extension enables the display of customizable notifications directly on the screen.",
+  "tags": [],
+  "authorIds": [
+    "VOjZ8nPDQygGiB54WZjwVomppds2"
+  ],
+  "dependencies": [],
+  "globalVariables": [],
+  "sceneVariables": [],
+  "eventsFunctions": [
+    {
+      "description": "Display A Notification",
+      "fullName": "Display A Notification",
+      "functionType": "Action",
+      "name": "Display_A_Notification",
+      "sentence": "Top Text _PARAM1_ Bottom Text _PARAM2_ Icon Resource _PARAM3_ Silent? _PARAM4_",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::JsCode",
+              "inlineCode": [
+                "function getExtensionParamValue(eventsFunctionContext, paramName) {",
+                "  return eventsFunctionContext.getArgument(paramName);",
+                "}",
+                "",
+                "var TopText_Param = getExtensionParamValue(eventsFunctionContext, \"TopText_Param\");",
+                "var BottomText_Param = getExtensionParamValue(eventsFunctionContext, \"BottomText_Param\");",
+                "var Icon_Resource_Param = getExtensionParamValue(eventsFunctionContext, \"Icon_Resource_Param\");",
+                "var Silent_Param = getExtensionParamValue(eventsFunctionContext, \"Silent_Param\");",
+                "",
+                "if (\"Notification\" in window) {",
+                "  Notification.requestPermission().then(permission => {",
+                "    if (permission === \"granted\") {",
+                "      new Notification(TopText_Param, {",
+                "        body: BottomText_Param,",
+                "        icon: Icon_Resource_Param,",
+                "        silent: Silent_Param",
+                "      });",
+                "    }",
+                "  });",
+                "}"
+              ],
+              "parameterObjects": "",
+              "useStrict": true,
+              "eventsSheetExpanded": false
+            }
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "description": "The top text that is displayed in the notification.",
+          "name": "TopText_Param",
+          "type": "string"
+        },
+        {
+          "description": "The bottom text that is displayed in the notification.",
+          "name": "BottomText_Param",
+          "type": "string"
+        },
+        {
+          "description": "The icon that is displayed on the notification from a resource name for example \"image.png\"",
+          "name": "Icon_Resource_Param",
+          "type": "string"
+        },
+        {
+          "description": "Make the notification be silent?",
+          "name": "Silent_Param",
+          "type": "yesorno"
+        }
+      ],
+      "objectGroups": []
+    }
+  ],
+  "eventsBasedBehaviors": [],
+  "eventsBasedObjects": []
+}
